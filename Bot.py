@@ -119,4 +119,4 @@ async def slap(ctx, *, reason: Slapper):
     await ctx.send(reason)
 
 
-bot.run('ODkxMDg4ODI0MDE5NjExNjY5.YU5RIw.Mc90lGz1mC02xL2QBF4J2vSlSR0')
+bot.run('enter token here')
