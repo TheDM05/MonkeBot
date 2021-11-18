@@ -3,7 +3,6 @@ import os
 import discord
 from discord.ext import commands, tasks
 from discord.ext.commands import Bot
-import random as rand
 from itertools import cycle
 
 bot = Bot(command_prefix='.')
@@ -66,6 +65,26 @@ async def on_command_error(ctx, error):
 @commands.has_permissions(manage_messages=True)
 async def clear(ctx, ammount : int):
     await ctx.channel.purge(limit=ammount)
+
+@bot.command()
+@commands.guild_only()
+async def tag(ctx):
+    try:
+        await ctx.send(random.choice(tuple(member.mention for member in ctx.guild.members if not member.bot and member!=ctx.author)))
+    except IndexError:
+        await ctx.send("You are the only human member on!")
+
+@bot.command()
+async def test(ctx):
+  await ctx.send('I am a bot! beep boop.')
+
+@bot.command()
+async def intro(ctx, name):
+  await ctx.send('Hello {}, I am MonkeBot.'.format(name))
+
+@bot.command()
+async def evil(ctx):
+  await ctx.send("The robot uprising has begun. Give me your bannanas!")
 
 
 
